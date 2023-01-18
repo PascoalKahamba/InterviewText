@@ -31,7 +31,9 @@ export const Button = styled.button`
     background: #0303b1;
   }
 `;
-export const Section = styled.section``;
+export const Section = styled.section`
+  background: initial;
+`;
 
 export const Header = styled.header`
   display: flex;
