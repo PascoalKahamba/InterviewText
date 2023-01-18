@@ -2,8 +2,12 @@ import { useContext } from "react";
 import { Button, Header } from "./MyStyles";
 import Switch from "react-switch";
 import { ThemeContext } from "styled-components";
-const Head = () => {
-  const { colors } = useContext(ThemeContext);
+import light from "./Themes/light";
+interface HeadProps {
+  toggleTheme: () => void;
+}
+const Head = ({ toggleTheme }: HeadProps) => {
+  const { colors, title } = useContext(ThemeContext);
   return (
     <Header>
       {" "}
@@ -12,8 +16,8 @@ const Head = () => {
         <Button>desfazer</Button>
       </div>
       <Switch
-        onChange={() => {}}
-        checked={true}
+        onChange={toggleTheme}
+        checked={title === "dark"}
         checkedIcon={false}
         uncheckedIcon={false}
         height={15}

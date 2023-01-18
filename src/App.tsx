@@ -8,13 +8,13 @@ const App = () => {
   const [theme, setTheme] = useState(light);
 
   const toggleTheme = () => {
-    setTheme(theme === light ? light : dark);
+    setTheme(theme.title === "light" ? dark : light);
   };
   return (
-    <ThemeProvider theme={light}>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Section>
-        <Head />
+        <Head toggleTheme={toggleTheme} />
       </Section>
     </ThemeProvider>
   );

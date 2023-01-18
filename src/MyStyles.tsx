@@ -17,7 +17,7 @@ export const GlobalStyle = createGlobalStyle`
 `;
 export const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.button};
-  color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.text};
   font-weight: bold;
   padding: 1rem;
   outline: none;
