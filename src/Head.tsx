@@ -1,6 +1,9 @@
-import { Button, Header } from "../MyStyles";
+import { useContext } from "react";
+import { Button, Header } from "./MyStyles";
 import Switch from "react-switch";
+import { ThemeContext } from "styled-components";
 const Head = () => {
+  const { colors } = useContext(ThemeContext);
   return (
     <Header>
       {" "}
@@ -17,7 +20,7 @@ const Head = () => {
         width={45}
         handleDiameter={24}
         offColor="black"
-        onColor="white"
+        onColor={colors.secundary}
       />
     </Header>
   );
