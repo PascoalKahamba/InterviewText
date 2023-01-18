@@ -12,12 +12,12 @@ export const GlobalStyle = createGlobalStyle`
           font-family: Arial, Helvetica, sans-serif;
           background-color: ${({ theme }) => theme.colors.background};
           font-size: 1.5rem;
-          padding: 0.5rem;
+   
     }
 `;
 export const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.button};
-  color: white;
+  color: ${({ theme }) => theme.colors.background};
   font-weight: bold;
   padding: 1rem;
   outline: none;
@@ -31,8 +31,13 @@ export const Button = styled.button`
     background: #0303b1;
   }
 `;
-export const Section = styled.section`
+export const Section = styled.section``;
+
+export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: ${({ theme }) => theme.colors.primary};
+  width: 100%;
+  padding: 1rem;
 `;

@@ -1,17 +1,14 @@
 import { ThemeProvider } from "styled-components";
-import { Button, GlobalStyle, Section } from "./MyStyles";
+import { GlobalStyle, Section } from "./MyStyles";
 import light from "./Themes/light";
-import Switch from "react-switch";
+
+import Head from "./Themes/Head";
 const App = () => {
   return (
     <ThemeProvider theme={light}>
       <GlobalStyle />
       <Section>
-        <div className="buttons">
-          <Button>adicionar</Button>
-          <Button>desfazer</Button>
-        </div>
-        <Switch />
+        <Head />
       </Section>
     </ThemeProvider>
   );
