@@ -23,7 +23,6 @@ const Head = ({ toggleTheme }: HeadProps) => {
         height={15}
         width={45}
         handleDiameter={24}
-        offColor="black"
         onColor={colors.secundary}
       />
     </Header>
