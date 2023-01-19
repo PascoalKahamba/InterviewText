@@ -8,4 +8,8 @@ export default {
     background: "#f5f5f5",
     text: "#fff",
   },
+
+  circle: {
+    color: "#000",
+  },
 };

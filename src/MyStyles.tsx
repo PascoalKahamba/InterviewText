@@ -45,3 +45,11 @@ export const Header = styled.header`
   width: 100%;
   padding: 1rem;
 `;
+
+export const Circle = styled.div`
+  margin: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0.4rem solid ${({ theme }) => theme.circle.color};
+  border-radius: 100%;
+`;
