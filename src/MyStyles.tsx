@@ -32,7 +32,9 @@ export const Button = styled.button`
   }
 `;
 export const Section = styled.section`
-  background: initial;
+  background: ${({ theme }) => theme.colors.background};
+  width: 100vw;
+  height: 100vh;
 `;
 
 export const Header = styled.header`

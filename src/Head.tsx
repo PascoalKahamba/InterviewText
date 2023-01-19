@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Button, Header } from "./MyStyles";
 import Switch from "react-switch";
 import { ThemeContext } from "styled-components";
+import { shade } from "polished";
 
 interface HeadProps {
   toggleTheme: () => void;
@@ -23,7 +24,7 @@ const Head = ({ toggleTheme }: HeadProps) => {
         height={15}
         width={45}
         handleDiameter={24}
-        onColor={colors.secundary}
+        onColor={shade(0.5, colors.secundary)}
       />
     </Header>
   );
