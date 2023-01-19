@@ -22,16 +22,17 @@ const App = () => {
 
   const handleCircle: CircleProps = (event) => {
     const { clientX, clientY } = event;
+    console.log(event);
     setCircle([...circles, { clientX, clientY }]);
     console.log(circles);
   };
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
+      <Head toggleTheme={toggleTheme} handleCircle={handleCircle} />
       <Section onClick={handleCircle}>
-        <Head toggleTheme={toggleTheme} />
         {circles.map(({ clientX, clientY }, index) => (
-          <Circle key={index} left={clientX - 5} top={clientY - 5}></Circle>
+          <Circle key={index} left={clientX - 11} top={clientY - 11}></Circle>
         ))}
       </Section>
     </ThemeProvider>
