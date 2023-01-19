@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
+interface Cssprops {
+  left: React.CSSProperties["left"];
+  top: React.CSSProperties["top"];
+}
 export const GlobalStyle = createGlobalStyle`
     *{
         margin: 0;
@@ -12,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
           font-family: Arial, Helvetica, sans-serif;
           background-color: ${({ theme }) => theme.colors.background};
           font-size: 1.5rem;
+            cursor: pointer;
    
     }
 `;
@@ -46,8 +51,10 @@ export const Header = styled.header`
   padding: 1rem;
 `;
 
-export const Circle = styled.div`
-  margin: 0.5rem;
+export const Circle = styled.div<Cssprops>`
+  position: absolute;
+  left: ${({ left }) => left + "px"};
+  top: ${({ top }) => top + "px"};
   width: 1.5rem;
   height: 1.5rem;
   border: 0.4rem solid ${({ theme }) => theme.circle.color};

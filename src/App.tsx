@@ -8,7 +8,7 @@ import { useState } from "react";
 
 type CircleProps = React.MouseEventHandler<HTMLElement> | undefined;
 
-interface CoordinatesProps {
+export interface CoordinatesProps {
   clientX: number;
   clientY: number;
 }
@@ -30,8 +30,8 @@ const App = () => {
       <GlobalStyle />
       <Section onClick={handleCircle}>
         <Head toggleTheme={toggleTheme} />
-        {circles.map((circle) => (
-          <Circle></Circle>
+        {circles.map(({ clientX, clientY }, index) => (
+          <Circle key={index} left={clientX - 5} top={clientY - 5}></Circle>
         ))}
       </Section>
     </ThemeProvider>
