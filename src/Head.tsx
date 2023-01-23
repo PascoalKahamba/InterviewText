@@ -6,22 +6,12 @@ import { shade } from "polished";
 
 interface HeadProps {
   toggleTheme: () => void;
-  handleCircle: React.MouseEventHandler<HTMLButtonElement> | undefined;
 }
-const Head = ({ toggleTheme, handleCircle }: HeadProps) => {
+const Head = ({ toggleTheme }: HeadProps) => {
   const { colors, title } = useContext(ThemeContext);
-  const handleClear = () => {
-    console.log("Clear");
-  };
+
   return (
     <Header>
-      {" "}
-      <div className="buttons">
-        <Button onClick={handleCircle} disabled>
-          Anular
-        </Button>
-        <Button onClick={handleClear}>fazer</Button>
-      </div>
       <Switch
         onChange={toggleTheme}
         checked={title === "dark"}
