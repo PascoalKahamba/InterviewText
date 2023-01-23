@@ -1,29 +1,23 @@
 import { DefaultTheme, ThemeProvider } from "styled-components";
-import { GlobalStyle, Section } from "./MyStyles";
+import { GlobalStyle } from "./MyStyles";
 import axios from "axios";
 import light from "./Themes/light";
 import dark from "./Themes/dark";
 import Head from "./Head";
-import usePersistedState from "./Hooks/Hooks/usePersistedState";
-import { useEffect } from "react";
+import usePersistedState from "./Hooks/usePersistedState";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import PageItem from "./PageItem";
+import useFetch from "./Hooks/useFetch";
 
 const App = () => {
   const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
+  const { data, error, loading, request } = useFetch();
 
   useEffect(() => {
-    async function useGetData() {
-      const response = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0"
-      );
-      console.log(response);
-      const json = await response.data;
-      console.log(json);
-    }
-    useGetData();
-  }, []);
+    request("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0");
+  }, [request]);
 
   const toggleTheme = () => {
     setTheme(theme.title === "light" ? dark : light);
