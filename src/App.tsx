@@ -6,6 +6,9 @@ import dark from "./Themes/dark";
 import Head from "./Head";
 import usePersistedState from "./Hooks/Hooks/usePersistedState";
 import { useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./Home";
+import PageItem from "./PageItem";
 
 const App = () => {
   const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
@@ -30,7 +33,12 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Head toggleTheme={toggleTheme} />
-      <Section></Section>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="pageItem" element={<PageItem />} />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 };

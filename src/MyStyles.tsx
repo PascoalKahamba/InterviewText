@@ -23,22 +23,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
    }
 `;
-export const Button = styled.button`
-  background-color: ${({ theme }) => theme.colors.button};
-  color: ${({ theme }) => theme.colors.text};
-  font-weight: bold;
-  padding: 1rem;
-  outline: none;
-  border-radius: 0.5rem;
-  border: none;
-  transition: 0.3s;
-  cursor: pointer;
-  margin-right: 1rem;
 
-  &:hover {
-    background: #0303b1;
-  }
-`;
 export const Section = styled.section`
   background: ${({ theme }) => theme.colors.background};
 `;
@@ -49,7 +34,7 @@ export const Header = styled.header`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.primary};
   width: 100%;
-  padding: 1rem;
+  padding: 0.5rem;
 
   .photo {
     max-width: 7rem;

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Button, Header } from "./MyStyles";
+import { Header } from "./MyStyles";
 import Switch from "react-switch";
 import { ThemeContext } from "styled-components";
 import { shade } from "polished";
