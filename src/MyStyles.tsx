@@ -19,6 +19,9 @@ export const GlobalStyle = createGlobalStyle`
             cursor: pointer;
    
     }
+   img{
+    width: 100%;
+   }
 `;
 export const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.button};
@@ -38,8 +41,6 @@ export const Button = styled.button`
 `;
 export const Section = styled.section`
   background: ${({ theme }) => theme.colors.background};
-  width: 100vw;
-  height: 100vh;
 `;
 
 export const Header = styled.header`
@@ -49,6 +50,10 @@ export const Header = styled.header`
   background-color: ${({ theme }) => theme.colors.primary};
   width: 100%;
   padding: 1rem;
+
+  .photo {
+    max-width: 7rem;
+  }
 `;
 
 export const Circle = styled.div<Cssprops>`

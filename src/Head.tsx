@@ -3,6 +3,7 @@ import { Button, Header } from "./MyStyles";
 import Switch from "react-switch";
 import { ThemeContext } from "styled-components";
 import { shade } from "polished";
+import photo from "./img/Pokemon-logo-497D61B223-seeklogo.com.png";
 
 interface HeadProps {
   toggleTheme: () => void;
@@ -12,6 +13,9 @@ const Head = ({ toggleTheme }: HeadProps) => {
 
   return (
     <Header>
+      <div className="photo">
+        <img src={photo} alt="pokemon-photo" />
+      </div>
       <Switch
         onChange={toggleTheme}
         checked={title === "dark"}
