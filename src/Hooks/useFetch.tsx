@@ -2,11 +2,8 @@ import axios from "axios";
 import { useCallback, useState } from "react";
 
 export interface GetProps {
-  base_experience: number;
-  sprites: {
-    front_default: string;
-  };
   name: string;
+  url: string;
 }
 
 const useFetch = () => {
@@ -27,7 +24,7 @@ const useFetch = () => {
       json = null;
     } finally {
       setLoading(false);
-      setData(json);
+      setData(json.results);
       console.log(response);
       console.log(json);
       return { response, json };

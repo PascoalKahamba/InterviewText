@@ -22,6 +22,13 @@ export const GlobalStyle = createGlobalStyle`
    img{
     width: 100%;
    }
+   .flex{
+    display: flex;
+    gap: 1rem;
+    img{
+      width: 7rem;
+    }
+   }
 `;
 
 export const Section = styled.section`
