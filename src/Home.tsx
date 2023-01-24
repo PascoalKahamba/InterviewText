@@ -1,8 +1,28 @@
-import React from "react";
-import { Section } from "./MyStyles";
+import { DefaultTheme, ThemeProvider } from "styled-components";
+import Head from "./Head";
+import { GetProps } from "./Hooks/useFetch";
+import usePersistedState from "./Hooks/usePersistedState";
+import { GlobalStyle, Section } from "./MyStyles";
+import dark from "./Themes/dark";
+import light from "./Themes/light";
 
-const Home = () => {
-  return <Section>Hello</Section>;
+interface HomeProps {
+  data: GetProps[];
+}
+const Home = ({ data }: HomeProps) => {
+  const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
+
+  const toggleTheme = () => {
+    setTheme(theme.title === "light" ? dark : light);
+  };
+
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Head toggleTheme={toggleTheme} />
+      <Section></Section>
+    </ThemeProvider>
+  );
 };
 
 export default Home;

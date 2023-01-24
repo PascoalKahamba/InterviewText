@@ -16,6 +16,7 @@ const Head = ({ toggleTheme }: HeadProps) => {
       <div className="photo">
         <img src={photo} alt="pokemon-photo" />
       </div>
+
       <Switch
         onChange={toggleTheme}
         checked={title === "dark"}

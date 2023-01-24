@@ -1,8 +1,16 @@
 import axios from "axios";
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
+
+export interface GetProps {
+  base_experience: number;
+  sprites: {
+    front_default: string;
+  };
+  name: string;
+}
 
 const useFetch = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<GetProps[]>([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
