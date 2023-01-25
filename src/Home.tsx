@@ -12,6 +12,7 @@ interface HomeProps {
 }
 const Home = ({ data }: HomeProps) => {
   const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
+  const newData = [...data];
 
   const toggleTheme = () => {
     setTheme(theme.title === "light" ? dark : light);
@@ -22,9 +23,13 @@ const Home = ({ data }: HomeProps) => {
       <GlobalStyle />
       <Head toggleTheme={toggleTheme} />
       <Section>
-        {data.map((item) => (
-          <PageItem data={item} key={item.name} />
-        ))}
+        {data
+          .sort((a, b) => {
+            return a.name.localeCompare(b.name);
+          })
+          .map((item) => (
+            <PageItem data={item} key={item.name} />
+          ))}
       </Section>
     </ThemeProvider>
   );
