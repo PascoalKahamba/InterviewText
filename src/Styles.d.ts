@@ -13,6 +13,7 @@ declare module "styled-components" {
     };
     circle: {
       color: string;
+      bColor: string;
     };
   }
 }

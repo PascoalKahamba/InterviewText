@@ -11,5 +11,6 @@ export default {
 
   circle: {
     color: "blue",
+    bColor: "#2e2e2e",
   },
 };

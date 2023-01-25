@@ -6,10 +6,11 @@ export default {
     secundary: "#083D77",
     button: "#083D77",
     background: "#f5f5f5",
-    text: "#fff",
+    text: "#000",
   },
 
   circle: {
     color: "#000",
+    bColor: "#aaa",
   },
 };

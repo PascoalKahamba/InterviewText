@@ -4,10 +4,10 @@ import Home from "./Home";
 import useFetch from "./Hooks/useFetch";
 
 const App = () => {
-  const { data, error, loading, request } = useFetch();
+  const { data, request } = useFetch();
 
   useEffect(() => {
-    request("https://pokeapi.co/api/v2/pokemon?limit=300&offset=0");
+    request("https://pokeapi.co/api/v2/pokemon?limit=50&offset=0");
   }, [request]);
 
   return (

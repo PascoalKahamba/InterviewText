@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import useFetch from "./Hooks/useFetch";
+import { DivFlex } from "./MyStyles";
 interface PageProps {
   data: {
     name: string;
@@ -16,28 +18,36 @@ interface DetailsProps {
 
 const PageItem = ({ data }: PageProps) => {
   const [details, setDetails] = useState<DetailsProps[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     async function useDetails() {
+      setLoading(true);
       const response = await axios.get<DetailsProps>(data.url);
       const json = response.data;
       setDetails([...details, json]);
       console.log(details);
       console.log(json);
+      setLoading(false);
     }
     useDetails();
   }, [setDetails]);
-
+  if (loading) return <div>Carregando...</div>;
   return (
-    <div>
+    <DivFlex>
       {details.map(({ name, base_experience, sprites }) => (
-        <div key={name} className="flex">
+        <div key={name}>
           <img src={sprites.front_default} alt={`photo pokemon ${name}`} />
-          <h2>{name}</h2>
-          <p>{base_experience}</p>
+          <p>
+            Nome: <span>{name}</span>
+          </p>
+          <p>
+            Experiência: <span> {base_experience}</span>
+          </p>
         </div>
       ))}
-    </div>
+    </DivFlex>
   );
 };
 

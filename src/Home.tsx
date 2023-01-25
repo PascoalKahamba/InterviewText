@@ -23,9 +23,7 @@ const Home = ({ data }: HomeProps) => {
       <Head toggleTheme={toggleTheme} />
       <Section>
         {data.map((item) => (
-          <div key={item.name}>
-            <PageItem data={item} />
-          </div>
+          <PageItem data={item} key={item.name} />
         ))}
       </Section>
     </ThemeProvider>
