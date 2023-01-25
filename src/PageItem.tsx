@@ -33,7 +33,7 @@ const PageItem = ({ data }: PageProps) => {
     }
     useDetails();
   }, [setDetails]);
-  if (loading) return <div>Carregando...</div>;
+  if (loading) return <div className="loading"></div>;
   return (
     <DivFlex>
       {details.map(({ name, base_experience, sprites }) => (

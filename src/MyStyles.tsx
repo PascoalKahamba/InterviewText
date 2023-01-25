@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body{
+    
           font-family: Arial, Helvetica, sans-serif;
           background-color: ${({ theme }) => theme.colors.background};
           font-size: 1.5rem;
@@ -22,6 +23,22 @@ export const GlobalStyle = createGlobalStyle`
    img{
     width: 100%;
    }
+     .loading {
+    width: 2rem;
+    height: 2rem;
+    border: .5rem solid  ${({ theme }) => theme.circle.bColor};
+    border-left-color: transparent;
+    border-radius: 50%;
+    transform: rotate(90deg);
+    animation: loading  1s infinite;
+  }
+
+  @keyframes loading {
+     to{
+      transform: rotate(360deg);
+     }
+    
+  }
     
 `;
 

@@ -7,7 +7,7 @@ const App = () => {
   const { data, request } = useFetch();
 
   useEffect(() => {
-    request("https://pokeapi.co/api/v2/pokemon?limit=50&offset=0");
+    request("https://pokeapi.co/api/v2/pokemon?limit=200&offset=0");
   }, [request]);
 
   return (
