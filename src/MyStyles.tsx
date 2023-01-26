@@ -29,7 +29,6 @@ export const GlobalStyle = createGlobalStyle`
     border: .5rem solid  ${({ theme }) => theme.circle.bColor};
     border-left-color: transparent;
     border-radius: 50%;
-    transform: rotate(90deg);
     animation: loading  1s infinite;
   }
 
@@ -78,6 +77,18 @@ export const DivFlex = styled.div`
   }
   span + span {
     margin-left: 0.5rem;
+  }
+  .react-icons {
+    background-color: #3f3a3a;
+    border: 1px solid #333;
+    font-size: 3.5rem;
+    color: #fff;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    position: absolute;
+    top: 26rem;
+    left: 56rem;
+    z-index: 10000;
   }
   img {
     width: 8rem;

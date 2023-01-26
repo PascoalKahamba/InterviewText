@@ -12,7 +12,6 @@ interface HomeProps {
 }
 const Home = ({ data }: HomeProps) => {
   const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
-  const newData = [...data];
 
   const toggleTheme = () => {
     setTheme(theme.title === "light" ? dark : light);

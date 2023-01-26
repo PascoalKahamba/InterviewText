@@ -1,7 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import useFetch from "./Hooks/useFetch";
 import { DivFlex } from "./MyStyles";
+import { FiArrowUp } from "react-icons/fi";
+import { FiArrowDown } from "react-icons/fi";
+import { IconContext } from "react-icons/lib/esm/iconContext";
+
 interface PageProps {
   data: {
     name: string;
@@ -36,17 +39,20 @@ const PageItem = ({ data }: PageProps) => {
   if (loading) return <div className="loading"></div>;
   return (
     <DivFlex>
-      {details.map(({ name, base_experience, sprites }) => (
-        <div key={name}>
-          <img src={sprites.front_default} alt={`photo pokemon ${name}`} />
-          <p>
-            Nome: <span>{name}</span>
-          </p>
-          <p>
-            Experiência: <span> {base_experience}</span>
-          </p>
-        </div>
-      ))}
+      <IconContext.Provider value={{ className: "react-icons" }}>
+        <FiArrowUp className="down" />
+        {details.map(({ name, base_experience, sprites }) => (
+          <div key={name}>
+            <img src={sprites.front_default} alt={`photo pokemon ${name}`} />
+            <p>
+              Nome: <span>{name}</span>
+            </p>
+            <p>
+              Experiência: <span> {base_experience}</span>
+            </p>
+          </div>
+        ))}
+      </IconContext.Provider>
     </DivFlex>
   );
 };
