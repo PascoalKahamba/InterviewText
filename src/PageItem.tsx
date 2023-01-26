@@ -19,10 +19,31 @@ interface DetailsProps {
   };
 }
 
+type DownProps = React.MouseEventHandler<SVGElement> | undefined;
 const PageItem = ({ data }: PageProps) => {
   const [details, setDetails] = useState<DetailsProps[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [scroll, SetScroll] = useState(false);
+
+  const handleScroll = () => {
+    console.log("Scroll page");
+    SetScroll(true);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, []);
+  const handleDown: DownProps = () => {
+    console.log("Cima");
+    console.log("first" + innerHeight);
+    console.log("last" + outerHeight);
+
+    const heightBody = Math.max(document.body.scrollHeight);
+    const heightElement = innerHeight;
+
+    window.scrollBy(heightElement, heightBody);
+  };
 
   useEffect(() => {
     async function useDetails() {
@@ -40,7 +61,7 @@ const PageItem = ({ data }: PageProps) => {
   return (
     <DivFlex>
       <IconContext.Provider value={{ className: "react-icons" }}>
-        <FiArrowUp className="down" />
+        {scroll && <FiArrowDown onClick={handleDown} />}
         {details.map(({ name, base_experience, sprites }) => (
           <div key={name}>
             <img src={sprites.front_default} alt={`photo pokemon ${name}`} />

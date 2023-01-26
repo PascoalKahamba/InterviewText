@@ -20,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
             cursor: pointer;
    
     }
+ 
    img{
     width: 100%;
    }
@@ -78,6 +79,7 @@ export const DivFlex = styled.div`
   span + span {
     margin-left: 0.5rem;
   }
+
   .react-icons {
     background-color: #3f3a3a;
     border: 1px solid #333;

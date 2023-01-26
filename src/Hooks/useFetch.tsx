@@ -30,7 +30,6 @@ function useFetch() {
       setData(json.results);
       console.log(response);
       console.log(json);
-      return { response, json };
     }
   }, []);
   return {
