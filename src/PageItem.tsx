@@ -66,7 +66,7 @@ const PageItem = ({ data }: PageProps) => {
   return (
     <DivFlex>
       <IconContext.Provider value={{ className: "react-icons" }}>
-        {scroll > 50 ? (
+        {scroll > 100 ? (
           <>
             {scroll > heightBody / 2 ? (
               <FiArrowUp onClick={() => (window.scrollY = 0)} />

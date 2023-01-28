@@ -99,3 +99,26 @@ export const DivFlex = styled.div`
     color: ${({ theme }) => theme.colors.text};
   }
 `;
+
+export const SeeMore = styled.button`
+  position: fixed;
+  width: 10rem;
+  text-align: center;
+  bottom: 2rem;
+  font-weight: bold;
+  border: none;
+  left: 26rem;
+  right: 10rem;
+  z-index: 1000;
+  cursor: pointer;
+  background-color: blue;
+  padding: 1rem;
+  color: white;
+  outline: none;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #0303b8;
+  }
+`;
