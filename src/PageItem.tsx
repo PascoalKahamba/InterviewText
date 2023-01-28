@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { DivFlex } from "./MyStyles";
 import { FiArrowUp } from "react-icons/fi";
 import { FiArrowDown } from "react-icons/fi";
@@ -19,60 +19,64 @@ interface DetailsProps {
   };
 }
 
-type DownProps = React.MouseEventHandler<SVGElement> | undefined;
 const PageItem = ({ data }: PageProps) => {
   const [details, setDetails] = useState<DetailsProps[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [scroll, SetScroll] = useState(false);
+  const [scroll, SetScroll] = useState(0);
 
-  const handleScroll = () => {
-    console.log("Scroll page");
-    SetScroll(true);
-  };
+  let heightBody: number = 0;
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-  }, []);
-  const handleDown: DownProps = () => {
-    console.log("Cima");
-    console.log("first" + innerHeight);
-    console.log("last" + outerHeight);
+  window.addEventListener("scroll", () => {
+    heightBody = document.body.scrollHeight;
+    console.log("body " + heightBody);
+    let currentHeight = window.scrollY;
+    SetScroll(window.scrollY);
+    console.log("currentHeight " + currentHeight);
+  });
 
-    const heightBody = Math.max(document.body.scrollHeight);
-    const heightElement = innerHeight;
-
-    window.scrollBy(heightElement, heightBody);
-  };
+  const pokemonList = useMemo(() => {
+    return details.map(({ name, base_experience, sprites }) => (
+      <div key={name}>
+        <img src={sprites.front_default} alt={`photo pokemon ${name}`} />
+        <p>
+          Nome: <span>{name}</span>
+        </p>
+        <p>
+          Experiência: <span> {base_experience}</span>
+        </p>
+      </div>
+    ));
+  }, [details]);
 
   useEffect(() => {
     async function useDetails() {
       setLoading(true);
       const response = await axios.get<DetailsProps>(data.url);
       const json = response.data;
-      setDetails([...details, json]);
+      setDetails([json]);
       console.log(details);
       console.log(json);
       setLoading(false);
     }
     useDetails();
-  }, [setDetails]);
+  }, []);
+
   if (loading) return <div className="loading"></div>;
+
   return (
     <DivFlex>
       <IconContext.Provider value={{ className: "react-icons" }}>
-        {scroll && <FiArrowDown onClick={handleDown} />}
-        {details.map(({ name, base_experience, sprites }) => (
-          <div key={name}>
-            <img src={sprites.front_default} alt={`photo pokemon ${name}`} />
-            <p>
-              Nome: <span>{name}</span>
-            </p>
-            <p>
-              Experiência: <span> {base_experience}</span>
-            </p>
-          </div>
-        ))}
+        {scroll > 50 ? (
+          <>
+            {scroll > heightBody / 2 ? (
+              <FiArrowUp onClick={() => (window.scrollY = 0)} />
+            ) : (
+              <FiArrowDown onClick={() => window.scrollTo(0, heightBody)} />
+            )}
+          </>
+        ) : null}
+
+        {pokemonList}
       </IconContext.Provider>
     </DivFlex>
   );

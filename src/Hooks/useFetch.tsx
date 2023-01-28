@@ -27,7 +27,7 @@ function useFetch() {
       json = null;
     } finally {
       setLoading(false);
-      setData(json.results);
+      if (json) setData(json.results);
       console.log(response);
       console.log(json);
     }

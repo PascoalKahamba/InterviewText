@@ -87,9 +87,9 @@ export const DivFlex = styled.div`
     color: #fff;
     border-radius: 0.5rem;
     padding: 0.5rem;
-    position: absolute;
-    top: 26rem;
-    left: 56rem;
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
     z-index: 10000;
   }
   img {
