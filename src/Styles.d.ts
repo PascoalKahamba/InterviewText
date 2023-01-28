@@ -15,5 +15,10 @@ declare module "styled-components" {
       color: string;
       bColor: string;
     };
+
+    button: {
+      backgroundColor: string;
+      hoverColor: string;
+    };
   }
 }

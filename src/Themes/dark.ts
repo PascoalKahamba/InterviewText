@@ -13,4 +13,9 @@ export default {
     color: "blue",
     bColor: "#2e2e2e",
   },
+
+  button: {
+    backgroundColor: "#02025c",
+    hoverColor: "#0303b8",
+  },
 };

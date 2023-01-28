@@ -1,10 +1,6 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
-interface Cssprops {
-  left: React.CSSProperties["left"];
-  top: React.CSSProperties["top"];
-}
 export const GlobalStyle = createGlobalStyle`
     *{
         margin: 0;
@@ -90,7 +86,7 @@ export const DivFlex = styled.div`
     position: fixed;
     right: 2rem;
     bottom: 2rem;
-    z-index: 10000;
+    z-index: 1000;
   }
   img {
     width: 8rem;
@@ -111,14 +107,14 @@ export const SeeMore = styled.button`
   right: 10rem;
   z-index: 1000;
   cursor: pointer;
-  background-color: blue;
+  background-color: ${({ theme }) => theme.button.backgroundColor};
   padding: 1rem;
-  color: white;
+  color: ${({ theme }) => theme.colors.text};
   outline: none;
   border-radius: 0.5rem;
   transition: 0.3s;
 
   &:hover {
-    background-color: #0303b8;
+    background-color: ${({ theme }) => theme.button.hoverColor};
   }
 `;
