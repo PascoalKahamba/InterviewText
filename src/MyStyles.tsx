@@ -20,21 +20,7 @@ export const GlobalStyle = createGlobalStyle`
    img{
     width: 100%;
    }
-     .loading {
-    width: 2rem;
-    height: 2rem;
-    border: .5rem solid  ${({ theme }) => theme.circle.bColor};
-    border-left-color: transparent;
-    border-radius: 50%;
-    animation: loading  1s infinite;
-  }
 
-  @keyframes loading {
-     to{
-      transform: rotate(360deg);
-     }
-    
-  }
     
 `;
 
@@ -159,5 +145,35 @@ export const DivOfSearch = styled.div`
 
   button:hover {
     background: ${({ theme }) => theme.searchButton.bgHover};
+  }
+`;
+
+export const FatherLoading = styled.div`
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #0000002d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .loading {
+    width: 10rem;
+    height: 10rem;
+    border: 2rem solid ${({ theme }) => theme.colors.text};
+    border-left-color: transparent;
+    border-radius: 50%;
+    animation: loading 1s infinite;
+  }
+
+  @keyframes loading {
+    to {
+      transform: rotate(360deg);
+    }
   }
 `;

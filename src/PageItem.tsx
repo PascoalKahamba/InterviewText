@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect, useMemo } from "react";
-import { DivFlex } from "./MyStyles";
+import { DivFlex, FatherLoading } from "./MyStyles";
 import { FiArrowUp } from "react-icons/fi";
 import { FiArrowDown } from "react-icons/fi";
 import { IconContext } from "react-icons/lib/esm/iconContext";
@@ -55,7 +55,12 @@ const PageItem = ({ url }: PageProps) => {
     ));
   }, [details]);
 
-  if (loading) return <div className="loading"></div>;
+  if (loading)
+    return (
+      <FatherLoading>
+        <div className="loading"></div>
+      </FatherLoading>
+    );
 
   return (
     <DivFlex>
