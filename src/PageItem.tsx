@@ -11,8 +11,10 @@ interface PageProps {
     name: string;
     url: string;
   };
+  details: DetailsProps[];
+  setDetails: React.Dispatch<React.SetStateAction<DetailsProps[]>>;
 }
-interface DetailsProps {
+export interface DetailsProps {
   base_experience: number;
   name: string;
   sprites: {
@@ -20,8 +22,7 @@ interface DetailsProps {
   };
 }
 
-const PageItem = ({ url }: PageProps) => {
-  const [details, setDetails] = useState<DetailsProps[]>([]);
+const PageItem = ({ url, details, setDetails }: PageProps) => {
   const [scroll, SetScroll] = useState(0);
   const { data, request, loading } = useFetch<DetailsProps>();
 

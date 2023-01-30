@@ -4,12 +4,20 @@ import Switch from "react-switch";
 import { ThemeContext } from "styled-components";
 import { shade } from "polished";
 import photo from "./img/Pokemon-logo-497D61B223-seeklogo.com.png";
+import { DetailsProps } from "./PageItem";
 
 interface HeadProps {
   toggleTheme: () => void;
+  details: DetailsProps[];
 }
-const Head = ({ toggleTheme }: HeadProps) => {
+
+type SearchProps = React.MouseEventHandler<HTMLButtonElement> | undefined;
+
+const Head = ({ toggleTheme, details }: HeadProps) => {
   const { colors, title } = useContext(ThemeContext);
+  const searchPokemon: SearchProps = () => {
+    console.log("search pokemons");
+  };
 
   return (
     <Header>
@@ -18,7 +26,7 @@ const Head = ({ toggleTheme }: HeadProps) => {
       </div>
       <DivOfSearch>
         <input type="text" placeholder="procurar pokemon" />
-        <button>procurar</button>
+        <button onClick={searchPokemon}>procurar</button>
       </DivOfSearch>
       <Switch
         onChange={toggleTheme}
