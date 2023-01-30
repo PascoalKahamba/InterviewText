@@ -21,7 +21,6 @@ interface HomeProps {
 
 const Home = ({ data, setMoreItens }: HomeProps) => {
   const [theme, setTheme] = usePersistedState<ThemeMode>("theme", "dark");
-  const [details, setDetails] = useState<DetailsProps[]>([]);
 
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
@@ -30,7 +29,7 @@ const Home = ({ data, setMoreItens }: HomeProps) => {
   return (
     <ThemeProvider theme={theme === "dark" ? dark : light}>
       <GlobalStyle />
-      <Head toggleTheme={toggleTheme} details={details} />
+      <Head toggleTheme={toggleTheme} />
       <Section>
         <FatherButton>
           <SeeMore onClick={() => setMoreItens((before) => before + 10)}>
@@ -42,12 +41,7 @@ const Home = ({ data, setMoreItens }: HomeProps) => {
             return a.name.localeCompare(b.name);
           })
           .map((item) => (
-            <PageItem
-              url={item}
-              key={item.name}
-              details={details}
-              setDetails={setDetails}
-            />
+            <PageItem url={item} key={item.name} />
           ))}
       </Section>
     </ThemeProvider>

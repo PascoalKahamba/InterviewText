@@ -8,26 +8,17 @@ import { DetailsProps } from "./PageItem";
 
 interface HeadProps {
   toggleTheme: () => void;
-  details: DetailsProps[];
 }
 
-type SearchProps = React.MouseEventHandler<HTMLButtonElement> | undefined;
-
-const Head = ({ toggleTheme, details }: HeadProps) => {
+const Head = ({ toggleTheme }: HeadProps) => {
   const { colors, title } = useContext(ThemeContext);
-  const searchPokemon: SearchProps = () => {
-    console.log("search pokemons");
-  };
 
   return (
     <Header>
       <div className="photo">
         <img src={photo} alt="pokemon-photo" />
       </div>
-      <DivOfSearch>
-        <input type="text" placeholder="procurar pokemon" />
-        <button onClick={searchPokemon}>procurar</button>
-      </DivOfSearch>
+
       <Switch
         onChange={toggleTheme}
         checked={title === "dark"}

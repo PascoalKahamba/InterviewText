@@ -11,8 +11,6 @@ interface PageProps {
     name: string;
     url: string;
   };
-  details: DetailsProps[];
-  setDetails: React.Dispatch<React.SetStateAction<DetailsProps[]>>;
 }
 export interface DetailsProps {
   base_experience: number;
@@ -22,8 +20,10 @@ export interface DetailsProps {
   };
 }
 
-const PageItem = ({ url, details, setDetails }: PageProps) => {
+const PageItem = ({ url }: PageProps) => {
   const [scroll, SetScroll] = useState(0);
+  const [details, setDetails] = useState<DetailsProps[]>([]);
+
   const { data, request, loading } = useFetch<DetailsProps>();
 
   let heightBody: number = 0;
@@ -39,7 +39,7 @@ const PageItem = ({ url, details, setDetails }: PageProps) => {
   useEffect(() => {
     request(url.url);
     if (data) setDetails([data]);
-  }, [request, details]);
+  }, [request, details, data]);
 
   const pokemonList = useMemo(() => {
     return details.map(({ name, base_experience, sprites }) => (
@@ -63,7 +63,7 @@ const PageItem = ({ url, details, setDetails }: PageProps) => {
         {scroll > 100 ? (
           <>
             {scroll > heightBody / 2 ? (
-              <FiArrowUp onClick={() => (window.scrollY = 0)} />
+              <FiArrowUp onClick={() => window.scrollTo(heightBody, 0)} />
             ) : (
               <FiArrowDown onClick={() => window.scrollTo(0, heightBody)} />
             )}
