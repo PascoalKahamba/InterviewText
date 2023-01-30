@@ -1,4 +1,6 @@
-export default {
+import { DefaultTheme } from "styled-components";
+
+const Dark: DefaultTheme = {
   title: "dark",
 
   colors: {
@@ -19,3 +21,4 @@ export default {
     hoverColor: "#0303b8",
   },
 };
+export default Dark;

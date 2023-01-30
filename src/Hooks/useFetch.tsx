@@ -6,8 +6,8 @@ export interface GetProps {
   url: string;
 }
 
-function useFetch() {
-  const [data, setData] = useState<GetProps[]>([]);
+function useFetch<T>() {
+  const [data, setData] = useState<T | null>(null);
 
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -19,15 +19,15 @@ function useFetch() {
       setError(false);
       setLoading(true);
       const myUrl = axios.create({
-        baseURL: "https://pokeapi.co/api/v2/pokemon?limit=300&offset=0",
+        baseURL: "https://pokeapi.co/api/v2",
       });
-      response = await myUrl.get(url);
+      response = await myUrl.get<T>(url);
       json = response.data;
     } catch (erro) {
       json = null;
     } finally {
       setLoading(false);
-      if (json) setData(json.results);
+      if (json) setData(json);
       console.log(response);
       console.log(json);
     }

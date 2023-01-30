@@ -4,9 +4,10 @@ import { DivFlex } from "./MyStyles";
 import { FiArrowUp } from "react-icons/fi";
 import { FiArrowDown } from "react-icons/fi";
 import { IconContext } from "react-icons/lib/esm/iconContext";
+import useFetch from "./Hooks/useFetch";
 
 interface PageProps {
-  data: {
+  url: {
     name: string;
     url: string;
   };
@@ -19,10 +20,10 @@ interface DetailsProps {
   };
 }
 
-const PageItem = ({ data }: PageProps) => {
+const PageItem = ({ url }: PageProps) => {
   const [details, setDetails] = useState<DetailsProps[]>([]);
-  const [loading, setLoading] = useState(false);
   const [scroll, SetScroll] = useState(0);
+  const { data, request, loading } = useFetch<DetailsProps>();
 
   let heightBody: number = 0;
 
@@ -33,6 +34,11 @@ const PageItem = ({ data }: PageProps) => {
     SetScroll(window.scrollY);
     console.log("currentHeight " + currentHeight);
   });
+
+  useEffect(() => {
+    request(url.url);
+    if (data) setDetails([data]);
+  }, [request, details]);
 
   const pokemonList = useMemo(() => {
     return details.map(({ name, base_experience, sprites }) => (
@@ -47,19 +53,6 @@ const PageItem = ({ data }: PageProps) => {
       </div>
     ));
   }, [details]);
-
-  useEffect(() => {
-    async function useDetails() {
-      setLoading(true);
-      const response = await axios.get<DetailsProps>(data.url);
-      const json = response.data;
-      setDetails([json]);
-      console.log(details);
-      console.log(json);
-      setLoading(false);
-    }
-    useDetails();
-  }, []);
 
   if (loading) return <div className="loading"></div>;
 

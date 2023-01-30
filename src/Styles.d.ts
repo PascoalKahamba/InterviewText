@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
+export type ThemeMode = "light" | "dark";
 declare module "styled-components" {
   export interface DefaultTheme {
-    title: string;
+    title: ThemeMode;
 
     colors: {
       primary: string;

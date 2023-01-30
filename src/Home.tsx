@@ -1,37 +1,46 @@
-import { DefaultTheme, ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
 import Head from "./Head";
-import { GetProps } from "./Hooks/useFetch";
+
 import usePersistedState from "./Hooks/usePersistedState";
-import { GlobalStyle, Section, SeeMore } from "./MyStyles";
+import { FatherButton, GlobalStyle, Section, SeeMore } from "./MyStyles";
 import PageItem from "./PageItem";
+import { ThemeMode } from "./Styles";
 import dark from "./Themes/dark";
 import light from "./Themes/light";
 
 interface HomeProps {
-  data: GetProps[];
+  data: [
+    {
+      name: string;
+      url: string;
+    }
+  ];
   setMoreItens: React.Dispatch<React.SetStateAction<number>>;
 }
+
 const Home = ({ data, setMoreItens }: HomeProps) => {
-  const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
+  const [theme, setTheme] = usePersistedState<ThemeMode>("theme", "dark");
 
   const toggleTheme = () => {
-    setTheme(theme.title === "light" ? dark : light);
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme === "dark" ? dark : light}>
       <GlobalStyle />
       <Head toggleTheme={toggleTheme} />
       <Section>
-        <SeeMore onClick={() => setMoreItens((before) => before + 10)}>
-          Ver mais
-        </SeeMore>
+        <FatherButton>
+          <SeeMore onClick={() => setMoreItens((before) => before + 10)}>
+            Ver mais
+          </SeeMore>
+        </FatherButton>
         {data
           .sort((a, b) => {
             return a.name.localeCompare(b.name);
           })
           .map((item) => (
-            <PageItem data={item} key={item.name} />
+            <PageItem url={item} key={item.name} />
           ))}
       </Section>
     </ThemeProvider>

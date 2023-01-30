@@ -1,4 +1,6 @@
-export default {
+import { DefaultTheme } from "styled-components";
+
+const Light: DefaultTheme = {
   title: "light",
 
   colors: {
@@ -15,7 +17,9 @@ export default {
   },
 
   button: {
-    backgroundColor: "#02025c",
-    hoverColor: "#0303b8",
+    backgroundColor: "#009FB7",
+    hoverColor: "#083D77",
   },
 };
+
+export default Light;

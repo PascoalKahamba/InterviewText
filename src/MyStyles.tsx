@@ -97,15 +97,11 @@ export const DivFlex = styled.div`
 `;
 
 export const SeeMore = styled.button`
-  position: fixed;
   width: 10rem;
   text-align: center;
   bottom: 2rem;
   font-weight: bold;
   border: none;
-  left: 26rem;
-  right: 10rem;
-  z-index: 1000;
   cursor: pointer;
   background-color: ${({ theme }) => theme.button.backgroundColor};
   padding: 1rem;
@@ -117,4 +113,14 @@ export const SeeMore = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme.button.hoverColor};
   }
+`;
+
+export const FatherButton = styled.div`
+  position: fixed;
+  width: 100vw;
+  padding: 1rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  bottom: 0;
 `;
