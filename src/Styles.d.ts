@@ -21,5 +21,11 @@ declare module "styled-components" {
       backgroundColor: string;
       hoverColor: string;
     };
+
+    searchButton: {
+      background: string;
+      backgroundInput: string;
+      bgHover: string;
+    };
   }
 }

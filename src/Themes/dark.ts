@@ -20,5 +20,11 @@ const Dark: DefaultTheme = {
     backgroundColor: "#02025c",
     hoverColor: "#0303b8",
   },
+
+  searchButton: {
+    background: "#2e2e2e",
+    backgroundInput: "#3b3b3b",
+    bgHover: "#000",
+  },
 };
 export default Dark;

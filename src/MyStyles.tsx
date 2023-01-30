@@ -124,3 +124,40 @@ export const FatherButton = styled.div`
   justify-content: center;
   bottom: 0;
 `;
+
+export const DivOfSearch = styled.div`
+  width: auto;
+  margin: 0 auto;
+  padding: 0.5rem;
+  display: flex;
+
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+
+  input {
+    padding: 0.7rem;
+    width: 10rem;
+    background-color: ${({ theme }) => theme.searchButton.backgroundInput};
+    align-items: flex-start;
+    border: none;
+    border-radius: 1rem;
+    color: ${({ theme }) => theme.colors.text};
+    outline: none;
+  }
+
+  button {
+    background: ${({ theme }) => theme.searchButton.background};
+    padding: 0.7rem;
+    border: none;
+    color: ${({ theme }) => theme.colors.text};
+    border-radius: 0.5rem;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background: ${({ theme }) => theme.searchButton.bgHover};
+  }
+`;

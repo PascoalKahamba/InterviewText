@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Header } from "./MyStyles";
+import { DivOfSearch, Header } from "./MyStyles";
 import Switch from "react-switch";
 import { ThemeContext } from "styled-components";
 import { shade } from "polished";
@@ -16,7 +16,10 @@ const Head = ({ toggleTheme }: HeadProps) => {
       <div className="photo">
         <img src={photo} alt="pokemon-photo" />
       </div>
-
+      <DivOfSearch>
+        <input type="text" placeholder="procurar pokemon" />
+        <button>procurar</button>
+      </DivOfSearch>
       <Switch
         onChange={toggleTheme}
         checked={title === "dark"}

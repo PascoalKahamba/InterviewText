@@ -20,6 +20,12 @@ const Light: DefaultTheme = {
     backgroundColor: "#009FB7",
     hoverColor: "#083D77",
   },
+
+  searchButton: {
+    background: "#083D77",
+    backgroundInput: "#083D77",
+    bgHover: "blue",
+  },
 };
 
 export default Light;
