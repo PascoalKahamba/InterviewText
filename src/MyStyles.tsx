@@ -63,15 +63,16 @@ export const DivFlex = styled.div`
   }
 
   .react-icons {
-    background-color: #3f3a3a;
-    border: 1px solid #333;
+    background-color: ${({ theme }) => theme.button.backgroundColor};
     font-size: 3.5rem;
-    color: #fff;
+    color: ${({ theme }) => theme.colors.text};
     border-radius: 0.5rem;
+    border: none;
+    outline: none;
     padding: 0.5rem;
     position: fixed;
     right: 2rem;
-    bottom: 2rem;
+    bottom: 1.5rem;
     z-index: 1000;
   }
   img {
@@ -155,9 +156,8 @@ export const FatherLoading = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #0000002d;
+
+  background: #0000002d !important;
   display: flex;
   justify-content: center;
   align-items: center;

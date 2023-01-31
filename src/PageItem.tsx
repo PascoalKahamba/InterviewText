@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState, useEffect, useMemo } from "react";
 import { DivFlex, FatherLoading } from "./MyStyles";
 import { FiArrowUp } from "react-icons/fi";
@@ -30,10 +29,10 @@ const PageItem = ({ url }: PageProps) => {
 
   window.addEventListener("scroll", () => {
     heightBody = document.body.scrollHeight;
-    console.log("body " + heightBody);
+    console.log("body ", heightBody);
     let currentHeight = window.scrollY;
-    SetScroll(window.scrollY);
-    console.log("currentHeight " + currentHeight);
+    SetScroll(+window.scrollY);
+    console.log("currentHeight ", currentHeight);
   });
 
   useEffect(() => {
