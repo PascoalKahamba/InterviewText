@@ -21,7 +21,6 @@ export interface DetailsProps {
 
 const PageItem = ({ url }: PageProps) => {
   const [scroll, SetScroll] = useState(0);
-  const [details, setDetails] = useState<DetailsProps[]>([]);
 
   const { data, request, loading } = useFetch<DetailsProps>();
 
@@ -37,12 +36,13 @@ const PageItem = ({ url }: PageProps) => {
 
   useEffect(() => {
     request(url.url);
-    if (data) setDetails([data]);
-  }, [request, details, data]);
+  }, []);
 
   const pokemonList = useMemo(() => {
-    return details.map(({ name, base_experience, sprites }) => (
-      <div key={name}>
+    if (!data) return null;
+    const { name, base_experience, sprites } = data;
+    return (
+      <div>
         <img src={sprites.front_default} alt={`photo pokemon ${name}`} />
         <p>
           Nome: <span>{name}</span>
@@ -51,20 +51,15 @@ const PageItem = ({ url }: PageProps) => {
           Experiência: <span> {base_experience}</span>
         </p>
       </div>
-    ));
-  }, [details]);
-
-  if (loading)
-    return (
-      <FatherLoading>
-        <div className="loading"></div>
-      </FatherLoading>
     );
+  }, [data]);
+
+  if (loading) return <div></div>;
 
   return (
     <DivFlex>
       <IconContext.Provider value={{ className: "react-icons" }}>
-        {scroll > 100 ? (
+        {scroll > 50 ? (
           <>
             {scroll > heightBody / 2 ? (
               <FiArrowUp onClick={() => window.scrollTo(heightBody, 0)} />
