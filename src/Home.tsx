@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import Head from "./Head";
+<<<<<<< main
 import useFetch from "./Hooks/useFetch";
 
+=======
+>>>>>>> local
 import usePersistedState from "./Hooks/usePersistedState";
 import {
   FatherButton,
