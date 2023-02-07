@@ -25,19 +25,21 @@ interface HomeProps {
   setMoreItens: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export interface Pokemon {
+export interface PokemonList {
   name: string;
   url: string;
 }
+
+interface PokemonDetails extends Omit<PokemonList, "url"> {}
 interface FetchProps {
-  results: Pokemon[];
+  results: PokemonList[];
 }
 
 const Home = () => {
   const [theme, setTheme] = usePersistedState<ThemeMode>("theme", "dark");
   const { data, request, loading } = useFetch<FetchProps>();
   const [moreItens, setMoreItens] = useState(0);
-  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+  const [pokemons, setPokemons] = useState<PokemonList[]>([]);
 
   useEffect(() => {
     if (data) setPokemons([...pokemons, ...data.results]);

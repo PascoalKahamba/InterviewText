@@ -54,7 +54,7 @@ const PageItem = ({ url }: PageProps) => {
     );
   }, [data]);
 
-  if (loading) return <div></div>;
+  if (loading) return <p></p>;
 
   return (
     <DivFlex>
