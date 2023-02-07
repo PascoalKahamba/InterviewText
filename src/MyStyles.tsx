@@ -33,7 +33,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0.5rem;
     position: fixed;
     right: 2rem;
-    bottom: 1.5rem;
+    bottom: 1.1rem;
     z-index: 1000;
   }
     
@@ -42,11 +42,15 @@ export const GlobalStyle = createGlobalStyle`
 export const Section = styled.section`
   background: ${({ theme }) => theme.colors.background};
   display: flex;
-  margin: 0.5rem auto;
+  margin: 5.5rem auto 0.5rem auto;
   gap: 1rem;
   align-items: center;
   flex-wrap: wrap;
   max-width: 60rem;
+
+  .heightFlex {
+    height: ${({ theme }) => theme.heightDiv + "px"};
+  }
 `;
 
 export const Header = styled.header`
@@ -78,9 +82,6 @@ export const DivFlex = styled.div`
   }
   span + span {
     margin-left: 0.5rem;
-  }
-  div {
-    height: 200px;
   }
 
   img {
@@ -161,12 +162,12 @@ export const DivOfSearch = styled.div`
 
 export const FatherLoading = styled.div`
   position: fixed;
-  z-index: 1000;
+  z-index: 9999;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: #0000002d !important;
+  background: #00000084 !important;
   display: flex;
   justify-content: center;
   align-items: center;

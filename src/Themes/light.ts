@@ -11,6 +11,8 @@ const Light: DefaultTheme = {
     text: "#000",
   },
 
+  heightDiv: 200,
+
   circle: {
     color: "#000",
     bColor: "#aaa",

@@ -12,6 +12,8 @@ declare module "styled-components" {
       background: string;
       text: string;
     };
+
+    heightDiv: number;
     circle: {
       color: string;
       bColor: string;
