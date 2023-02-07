@@ -1,48 +1,17 @@
-import { useState, useEffect, useMemo } from "react";
-import { DivFlex, FatherLoading } from "./MyStyles";
-import { FiArrowUp } from "react-icons/fi";
-import { FiArrowDown } from "react-icons/fi";
-import { IconContext } from "react-icons/lib/esm/iconContext";
-import useFetch from "./Hooks/useFetch";
+import { useState, useMemo } from "react";
+import { DivFlex } from "./MyStyles";
+
+import { PokemonDetails } from "./services/pokemonAPI";
 
 interface PageProps {
-  url: {
-    name: string;
-    url: string;
-  };
-}
-export interface DetailsProps {
-  base_experience: number;
-  name: string;
-  sprites: {
-    front_default: string;
-  };
+  data: PokemonDetails;
 }
 
-const PageItem = ({ url }: PageProps) => {
-  const [scroll, SetScroll] = useState(0);
-
-  const { data, request, loading } = useFetch<DetailsProps>();
-
-  let heightBody: number = 0;
-
-  window.addEventListener("scroll", () => {
-    heightBody = document.body.scrollHeight;
-    console.log("body ", heightBody);
-    let currentHeight = window.scrollY;
-    SetScroll(+window.scrollY);
-    console.log("currentHeight ", currentHeight);
-  });
-
-  useEffect(() => {
-    request(url.url);
-  }, []);
-
+const PageItem = ({ data }: PageProps) => {
   const pokemonList = useMemo(() => {
-    if (!data) return null;
     const { name, base_experience, sprites } = data;
     return (
-      <div>
+      <div className="heightFlex">
         <img src={sprites.front_default} alt={`photo pokemon ${name}`} />
         <p>
           Nome: <span>{name}</span>
@@ -54,25 +23,7 @@ const PageItem = ({ url }: PageProps) => {
     );
   }, [data]);
 
-  if (loading) return <p></p>;
-
-  return (
-    <DivFlex>
-      <IconContext.Provider value={{ className: "react-icons" }}>
-        {scroll > 50 ? (
-          <>
-            {scroll > heightBody / 2 ? (
-              <FiArrowUp onClick={() => window.scrollTo(heightBody, 0)} />
-            ) : (
-              <FiArrowDown onClick={() => window.scrollTo(0, heightBody)} />
-            )}
-          </>
-        ) : null}
-
-        {pokemonList}
-      </IconContext.Provider>
-    </DivFlex>
-  );
+  return <DivFlex>{pokemonList}</DivFlex>;
 };
 
 export default PageItem;

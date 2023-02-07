@@ -10,6 +10,7 @@ const Dark: DefaultTheme = {
     background: "#12100E",
     text: "#fff",
   },
+  heightDiv: 200,
 
   circle: {
     color: "blue",

@@ -4,7 +4,6 @@ import Switch from "react-switch";
 import { ThemeContext } from "styled-components";
 import { shade } from "polished";
 import photo from "./img/Pokemon-logo-497D61B223-seeklogo.com.png";
-import { DetailsProps } from "./PageItem";
 
 interface HeadProps {
   toggleTheme: () => void;
