@@ -1,6 +1,5 @@
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
 import { DivFlex } from "./MyStyles";
-
 import { PokemonDetails } from "./services/pokemonAPI";
 
 interface PageProps {
