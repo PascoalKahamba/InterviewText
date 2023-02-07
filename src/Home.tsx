@@ -1,13 +1,5 @@
 import { ThemeProvider } from "styled-components";
 import Head from "./Head";
-<<<<<<< HEAD
-<<<<<<< main
-import useFetch from "./Hooks/useFetch";
-=======
->>>>>>> test
-
-=======
->>>>>>> local
 import usePersistedState from "./Hooks/usePersistedState";
 import usePokemons from "./Hooks/usePokemons";
 import {
