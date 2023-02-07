@@ -7,9 +7,11 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
     }
+    html{
+      scroll-behavior: smooth;
+    }
 
     body{
-    
           font-family: Arial, Helvetica, sans-serif;
           background-color: ${({ theme }) => theme.colors.background};
           font-size: 1.5rem;
@@ -21,6 +23,19 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
    }
 
+     .react-icons {
+    background-color: ${({ theme }) => theme.button.backgroundColor};
+    font-size: 3.5rem;
+    color: ${({ theme }) => theme.colors.text};
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    position: fixed;
+    right: 2rem;
+    bottom: 1.5rem;
+    z-index: 1000;
+  }
     
 `;
 
@@ -36,6 +51,9 @@ export const Section = styled.section`
 
 export const Header = styled.header`
   display: flex;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
   justify-content: space-between;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.primary};
@@ -61,20 +79,10 @@ export const DivFlex = styled.div`
   span + span {
     margin-left: 0.5rem;
   }
-
-  .react-icons {
-    background-color: ${({ theme }) => theme.button.backgroundColor};
-    font-size: 3.5rem;
-    color: ${({ theme }) => theme.colors.text};
-    border-radius: 0.5rem;
-    border: none;
-    outline: none;
-    padding: 0.5rem;
-    position: fixed;
-    right: 2rem;
-    bottom: 1.5rem;
-    z-index: 1000;
+  div {
+    height: 200px;
   }
+
   img {
     width: 8rem;
   }
@@ -104,12 +112,14 @@ export const SeeMore = styled.button`
 
 export const FatherButton = styled.div`
   position: fixed;
-  width: 100vw;
-  padding: 1rem;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 1rem;
   z-index: 1000;
   display: flex;
+  align-items: flex-end;
   justify-content: center;
-  bottom: 0;
 `;
 
 export const DivOfSearch = styled.div`
@@ -156,7 +166,6 @@ export const FatherLoading = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-
   background: #0000002d !important;
   display: flex;
   justify-content: center;
