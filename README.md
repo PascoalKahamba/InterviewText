@@ -2,9 +2,9 @@
 
 Este `Projeto` foi desenvolvido para fins de exercicío com o objetivo de melhorar as minhas `habilidades` em `TypeScript` e `React`. Este `projeto` exibe uma lista de `pokemons` da mesma `API` é um projecto simples mas desafiador o projecto também tem algumas funcionalidades adicionais como um `butão para ver mais pokemons` tem dois tema `dark` e `light` e ainda um `icone` para fazer um `scroll` até o inicío da página claro se usuário já fazer um scroll para baixo.
 
-![Aqui aparece a foto do projeto](src/photos/pokemon.PNG)
+![Aqui aparece a foto do projeto](src/img/pokemon.PNG)
 
-![Aqui aparece a outra foto do projeto](src/photos/pokemon1.PNG)
+![Aqui aparece a outra foto do projeto](src/img/pokemon1.PNG)
 
 ## Tecnologias
 
